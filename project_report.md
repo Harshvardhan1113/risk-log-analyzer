@@ -18,7 +18,7 @@
 
 ## Log Format Example
 ```log
-192.168.0.101 - - [03/Aug/2025:09:00:00 +0530] "POST /login HTTP/1.1" 401 - "Mozilla/5.0"
+192.168.1.10 - - [04/Aug/2025:10:05:01 +0530] "POST /login HTTP/1.1" 401 - "Mozilla/5.0"
 ```
 
 ---
@@ -51,7 +51,7 @@
 
 ## CLI Usage
 ```bash
-python analyzer.py --input logs/sample_case.log --threshold 10 --format json
+python analyzer.py --input logs/new_log_1.log --threshold 10 --format json
 ```
 
 ### Arguments:
@@ -63,27 +63,55 @@ python analyzer.py --input logs/sample_case.log --threshold 10 --format json
 
 ## Example Results
 
-### Input: `logs/sample_case.log`
+### Input: `logs/new_log_1.log`
 ```log
-192.168.0.101 - - [03/Aug/2025:09:00:00 +0530] "POST /login HTTP/1.1" 401 - "Mozilla/5.0"
-192.168.0.101 - - [03/Aug/2025:09:00:03 +0530] "POST /login HTTP/1.1" 401 - "Mozilla/5.0"
-192.168.0.101 - - [03/Aug/2025:09:00:07 +0530] "POST /login HTTP/1.1" 200 - "Mozilla/5.0"
-203.0.113.55 - - [03/Aug/2025:09:01:00 +0530] "GET /admin HTTP/1.1" 403 - "curl/7.68.0"
+192.168.1.10 - - [04/Aug/2025:10:05:01 +0530] "POST /login HTTP/1.1" 401 - "Mozilla/5.0"
+192.168.1.10 - - [04/Aug/2025:10:05:04 +0530] "POST /login HTTP/1.1" 401 - "Mozilla/5.0"
+192.168.1.10 - - [04/Aug/2025:10:05:08 +0530] "POST /login HTTP/1.1" 200 - "Mozilla/5.0"
+
+203.0.113.21 - - [04/Aug/2025:10:06:00 +0530] "GET /admin HTTP/1.1" 403 - "curl/7.68.0"
+203.0.113.21 - - [04/Aug/2025:10:06:01 +0530] "GET /etc/passwd HTTP/1.1" 404 - "curl/7.68.0"
+203.0.113.21 - - [04/Aug/2025:10:06:02 +0530] "GET /.env HTTP/1.1" 403 - "curl/7.68.0"
+
+10.0.0.5 - - [04/Aug/2025:10:07:10 +0530] "GET /login HTTP/1.1" 200 - "Mozilla/5.0"
+10.0.0.5 - - [04/Aug/2025:10:07:12 +0530] "POST /login HTTP/1.1" 401 - "Mozilla/5.0"
+10.0.0.5 - - [04/Aug/2025:10:07:15 +0530] "POST /login HTTP/1.1" 401 - "Mozilla/5.0"
+10.0.0.5 - - [04/Aug/2025:10:07:20 +0530] "POST /login HTTP/1.1" 401 - "Mozilla/5.0"
+10.0.0.5 - - [04/Aug/2025:10:07:22 +0530] "POST /login HTTP/1.1" 200 - "Mozilla/5.0"
+
+172.16.1.14 - - [04/Aug/2025:10:08:05 +0530] "GET /dashboard HTTP/1.1" 200 - "Mozilla/5.0"
+172.16.1.14 - - [04/Aug/2025:10:08:10 +0530] "POST /note/save HTTP/1.1" 200 - "Mozilla/5.0"
+172.16.1.14 - - [04/Aug/2025:10:08:30 +0530] "POST /logout HTTP/1.1" 200 - "Mozilla/5.0"
+
+198.51.100.6 - - [04/Aug/2025:10:09:00 +0530] "GET /robots.txt HTTP/1.1" 200 - "Mozilla/5.0"
+198.51.100.6 - - [04/Aug/2025:10:09:01 +0530] "GET /.git/config HTTP/1.1" 404 - "Mozilla/5.0"
+198.51.100.6 - - [04/Aug/2025:10:09:03 +0530] "GET /config.php HTTP/1.1" 403 - "Mozilla/5.0"
+198.51.100.6 - - [04/Aug/2025:10:09:04 +0530] "GET /admin HTTP/1.1" 403 - "Mozilla/5.0"
 ```
 
-### Output: `outputs/sample_alerts.json`
+### Output:
 ```json
 [
-  {
-    "ip": "192.168.0.101",
-    "risk_score": 16,
-    "risk_level": "Medium"
-  },
-  {
-    "ip": "203.0.113.55",
-    "risk_score": 12,
-    "risk_level": "Medium"
-  }
+    {
+        "ip": "192.168.1.10",
+        "risk_score": 16,
+        "risk_level": "Medium"
+    },
+    {
+        "ip": "203.0.113.21",
+        "risk_score": 17,
+        "risk_level": "Medium"
+    },
+    {
+        "ip": "10.0.0.5",
+        "risk_score": 19,
+        "risk_level": "Medium"
+    },
+    {
+        "ip": "198.51.100.6",
+        "risk_score": 17,
+        "risk_level": "Medium"
+    }
 ]
 ```
 ---
