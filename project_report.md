@@ -131,5 +131,33 @@ python analyzer.py --input logs/new_log_1.log --threshold 10 --format json
 - GitHub Actions testing + release
 
 ---
+## Screenshots
+### CLI Execution in PyCharm
 
+![CLI Run](assets/screenshots/cli_run.png)
 
+-This screenshot shows the execution of `analyzer.py` with sample log input. It calculates risk scores and exports alerts in structured format.
+
+---
+
+### JSON Alert Output
+
+![JSON Output](assets/screenshots/output_terminal.png)
+
+-Exported alert data showing IPs with calculated risk scores and their classification as Low, Medium, or High risk.
+
+---
+
+### JSON Export
+
+![JSON Export](assets/screenshots/output_exports.png)
+
+-Only entries above the threshold are included in the final JSON
+
+---
+
+### Project Folder Structure
+
+![Folder Structure](assets/screenshots/structure.png)
+
+-This image displays the overall structure of the project inside PyCharm, including source files, logs, and outputs.
