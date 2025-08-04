@@ -40,7 +40,7 @@
 | Access to /admin, /.env, /etc          | +7     |
 | 403/401 on restricted endpoints         | +5     |
 
-### 🔐 Risk Levels
+### Risk Levels
 | Score Range | Level   |
 |-------------|---------|
 | 0–10        | Low     |
