@@ -4,7 +4,7 @@ This tool analyzes server access logs and flags suspicious behavior using custom
 
 ## Sample Use Case
 
-### Input: [logs/new_log_1.log](../logs/new_log_1.log)
+### Input: [logs/new_log_1.log]
 Contains:
 - Brute-force login attempt (192.168.1.10)
 - Unauthorized admin access (203.0.113.21)
@@ -34,6 +34,7 @@ Contains:
         "risk_level": "Medium"
     }
 ]
+
 
 
 
